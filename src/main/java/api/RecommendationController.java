@@ -6,8 +6,8 @@ import dtos.RecommendationResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/recommendation")
-@CrossOrigin
 public class RecommendationController {
 
     private final OpenAiRecommendationService service;
@@ -16,7 +16,7 @@ public class RecommendationController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping()
     public RecommendationResponse getRecommendation(@RequestBody RecommendationRequest request) {
         String systemMessage = "You are a friendly academic and career advisor for high school students. Based on the user's interests, suggest suitable education paths or careers.";
         String recommendation = service.makeRequest(request.getInput(), systemMessage).getResponse();

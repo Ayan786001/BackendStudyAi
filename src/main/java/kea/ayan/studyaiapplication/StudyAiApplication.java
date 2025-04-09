@@ -8,6 +8,7 @@ public class StudyAiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(StudyAiApplication.class, args);
+        System.out.println(System.getenv("OPEN_API_KEY"));
     }
 
 }
