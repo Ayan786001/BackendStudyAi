@@ -1,4 +1,4 @@
-package dtos;
+package com.example.dtos;
 
 import java.util.ArrayList;
 import java.util.List;

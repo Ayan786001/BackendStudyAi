@@ -1,9 +1,9 @@
-package Service;
+package com.example.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dtos.ChatCompletionRequest;
-import dtos.ChatCompletionResponse;
-import dtos.MyResponse;
+import com.example.dtos.ChatCompletionRequest;
+import com.example.dtos.ChatCompletionResponse;
+import com.example.dtos.MyResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

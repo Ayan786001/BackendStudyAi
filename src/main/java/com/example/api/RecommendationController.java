@@ -1,8 +1,8 @@
-package api;
+package com.example.api;
 
-import Service.OpenAiRecommendationService;
-import dtos.RecommendationRequest;
-import dtos.RecommendationResponse;
+import com.example.Service.OpenAiRecommendationService;
+import com.example.dtos.RecommendationRequest;
+import com.example.dtos.RecommendationResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

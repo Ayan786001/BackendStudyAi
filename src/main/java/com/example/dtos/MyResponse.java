@@ -1,4 +1,4 @@
-package dtos;
+package com.example.dtos;
 
 public class MyResponse {
     private String response;
