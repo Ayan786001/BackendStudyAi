@@ -57,6 +57,10 @@ public class OpenAiRecommendationService {
     }
 
     public MyResponse makeRequest(String userPrompt, String systemMessage) {
+        System.out.println("Making request to " + userPrompt + " " + systemMessage);
+        System.out.println(API_KEY);
+        System.out.println(URL);
+        System.out.println(MODEL);
         ChatCompletionRequest requestDto = new ChatCompletionRequest();
         requestDto.setModel(MODEL);
         requestDto.setTemperature(TEMPERATURE);
