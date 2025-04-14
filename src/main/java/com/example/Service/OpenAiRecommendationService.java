@@ -23,6 +23,7 @@ public class OpenAiRecommendationService {
     private static final Logger logger = LoggerFactory.getLogger(OpenAiRecommendationService.class);
 
     private final WebClient client;
+    private final StatistikService statistikService;
     private final String API_KEY;
     private final String URL;
     private final String MODEL;
@@ -34,6 +35,7 @@ public class OpenAiRecommendationService {
 
     public OpenAiRecommendationService(
             WebClient.Builder webClientBuilder,
+            StatistikService statistikService,
             @Value("${app.api-key}") String apiKey,
             @Value("${app.url}") String url,
             @Value("${app.model}") String model,
@@ -44,6 +46,7 @@ public class OpenAiRecommendationService {
             @Value("${app.top_p}") double topP
     ) {
         this.client = webClientBuilder.build();
+        this.statistikService = statistikService;
         this.API_KEY = apiKey;
         this.URL = url;
         this.MODEL = model;
@@ -55,10 +58,7 @@ public class OpenAiRecommendationService {
     }
 
     public MyResponse makeRequest(String userPrompt, String systemMessage) {
-        System.out.println("Making request to " + userPrompt + " " + systemMessage);
-        System.out.println(API_KEY);
-        System.out.println(URL);
-        System.out.println(MODEL);
+        logger.info("Making request with prompt: {} | systemMessage: {}", userPrompt, systemMessage);
         ChatCompletionRequest requestDto = new ChatCompletionRequest();
         requestDto.setModel(MODEL);
         requestDto.setTemperature(TEMPERATURE);
@@ -72,7 +72,7 @@ public class OpenAiRecommendationService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             String json = mapper.writeValueAsString(requestDto);
-            logger.info("Sender request til OpenAI: {}", json);
+            logger.debug("Sender JSON til OpenAI: {}", json);
 
             ChatCompletionResponse response = client.post()
                     .uri(new URI(URL))
@@ -93,10 +93,10 @@ public class OpenAiRecommendationService {
             return new MyResponse(responseMsg);
 
         } catch (WebClientResponseException e) {
-            logger.error("Fejl fra OpenAI API: " + e.getResponseBodyAsString());
+            logger.error("Fejl fra OpenAI API: {}", e.getResponseBodyAsString(), e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Fejl fra OpenAI – prøv igen senere.");
         } catch (Exception e) {
-            logger.error("Intern fejl", e);
+            logger.error("Intern fejl ved kald til OpenAI", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Intern fejl – prøv igen senere.");
         }
     }
