@@ -37,3 +37,5 @@ public class ChatCompletionResponse {
     public Usage getUsage() { return usage; }
     public void setUsage(Usage usage) { this.usage = usage; }
 }
+
+
