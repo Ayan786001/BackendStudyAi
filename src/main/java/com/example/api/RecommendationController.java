@@ -3,6 +3,7 @@ package com.example.api;
 import com.example.Service.OpenAiRecommendationService;
 import com.example.dtos.RecommendationRequest;
 import com.example.dtos.RecommendationResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,4 +23,6 @@ public class RecommendationController {
         String recommendation = service.makeRequest(request.getInput(), systemMessage).getResponse();
         return new RecommendationResponse(recommendation);
     }
-}
+
+
+    }

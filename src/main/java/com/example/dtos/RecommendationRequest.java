@@ -10,4 +10,8 @@ public class RecommendationRequest {
     public void setInput(String input) {
         this.input = input;
     }
+
+    public RecommendationRequest(String input) {
+        this.input = input;
+    }
 }

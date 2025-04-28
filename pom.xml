@@ -1,72 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Dette er versionen af POM-modellen. -->
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
+        <!-- Angiver, at dette projekt er baseret på Spring Boot starter parent pom. -->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.4</version>
+        <!-- Relative path definerer, hvordan forældrenes pom-fil findes. -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <!-- Gruppe-ID for dit projekt, bruges til at identificere projektet på tværs af repositorier. -->
     <groupId>kea.ayan</groupId>
+
+    <!-- Artefakt-ID for dit specifikke projekt, også kendt som projektets navn. -->
     <artifactId>StudyAiApplication</artifactId>
+
+    <!-- Versionen af projektet. SNAPSHOT indikerer, at det er en udviklingsversion. -->
     <version>0.0.1-SNAPSHOT</version>
+
+    <!-- Projektets navn, vises i mange Maven-rapporter. -->
     <name>StudyAiApplication</name>
+
+    <!-- En kort beskrivelse af projektet. -->
     <description>StudyAiApplication</description>
+
     <url/>
+
     <licenses>
         <license/>
     </licenses>
+
     <developers>
         <developer/>
     </developers>
+
     <scm>
         <connection/>
         <developerConnection/>
         <tag/>
         <url/>
     </scm>
+
+    <!-- Definerer Java-versionen, der bruges til projektet. -->
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
+        <!-- Afhængigheder er eksterne biblioteker, som dit projekt bruger. -->
+
+        <!-- Spring Boot starter til JPA (Java Persistence API), som hjælper med at arbejde med databaser. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- Spring Boot starter til at opbygge en web-applikation (f.eks. RESTful services). -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- Spring WebFlux starter til reaktive web-applikationer (bruges til asynkrone web-tjenester). -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
+        <!-- H2-database driver, en indlejret database til udvikling. -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- MySQL-connector, der tillader dit projekt at kommunikere med en MySQL-database. -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Spring Boot starter til testformål, herunder enheds- og integrationstests. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Reactor-test, bruges til at teste reaktive applikationer. -->
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Spring Boot Actuator, giver indsigt i applikationens sundhed og status. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Spring Boot Maven Plugin, bruges til at bygge og køre Spring Boot-applikationen. -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
